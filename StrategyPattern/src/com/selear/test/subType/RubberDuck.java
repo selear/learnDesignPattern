@@ -1,5 +1,6 @@
-package com.selear.test;
+package com.selear.test.subType;
 
+import com.selear.test.Duck;
 import com.selear.test.behavior.impl.FlyNoWay;
 import com.selear.test.behavior.impl.Squeak;
 

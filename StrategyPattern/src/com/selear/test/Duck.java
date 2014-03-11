@@ -6,8 +6,8 @@ import com.selear.test.behavior.QuackBehavior;
 public class Duck {
 
 	//在超类中添加接口的引用, 在子类中引用不同的实例, 以此来完成子类不同行为的表现
-	FlyBehavior flyBehavior;
-	QuackBehavior quackBehavior;
+	public FlyBehavior flyBehavior;
+	public QuackBehavior quackBehavior;
 	
 	public Duck() {
 	}
@@ -30,5 +30,13 @@ public class Duck {
 	public void performQuack() {
 		quackBehavior.quack();
 	}
-	
+
+	//可以通过外部设定来改变某些行为
+	public void setFlyBehavior(FlyBehavior fb) {
+		this.flyBehavior = fb;
+	}
+
+	public void setQuackBehavior(QuackBehavior qb) {
+		this.quackBehavior = qb;
+	}
 }
