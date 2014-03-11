@@ -10,7 +10,7 @@ public class RubberDuck extends Duck {
 		flyBehavior = new FlyNoWay();
 	}
 	
-	void display() {
-		// 外观是橡皮鸭
+	public void display() {
+		System.out.println("我是橡皮鸭.");
 	}
 }

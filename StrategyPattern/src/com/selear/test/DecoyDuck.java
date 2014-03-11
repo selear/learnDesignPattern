@@ -11,7 +11,8 @@ public class DecoyDuck extends Duck {
 		flyBehavior = new FlyNoWay();
 	}
 	
-	void display() {
+	public void display() {
 		// 诱饵鸭
+		System.out.println("我是诱饵鸭.");
 	}
 }

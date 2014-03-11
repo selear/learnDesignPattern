@@ -10,7 +10,8 @@ public class RedheadDuck extends Duck {
 		flyBehavior = new FlyWithWings();
 	}
 	
-	void display() {
+	public void display() {
 		// 外观是红头
+		System.out.println("我是红头鸭.");
 	}
 }
