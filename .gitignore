@@ -1,0 +1,4 @@
+.metadata/.mylyn/.taskListIndex/segments.gen
+*.class
+.metadata/*
+StrategyPattern/.classpath
