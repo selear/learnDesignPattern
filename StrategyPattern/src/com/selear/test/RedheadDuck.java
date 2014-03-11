@@ -1,5 +1,8 @@
 package com.selear.test;
 
+import com.selear.test.interf.Flyable;
+import com.selear.test.interf.Quackable;
+
 public class RedheadDuck extends Duck implements Flyable, Quackable {
 
 	void display() {

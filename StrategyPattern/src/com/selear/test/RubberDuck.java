@@ -1,5 +1,7 @@
 package com.selear.test;
 
+import com.selear.test.interf.Quackable;
+
 public class RubberDuck extends Duck implements Quackable {
 
 	void display() {
