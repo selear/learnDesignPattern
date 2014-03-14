@@ -1,48 +1,72 @@
 package com.selear.patterns.observerPattern;
 
-public class WeatherData {
+import java.util.ArrayList;
 
+import com.selear.patterns.observerPattern.interf.Observer;
+import com.selear.patterns.observerPattern.interf.Subject;
+
+public class WeatherData implements Subject {
+
+	private ArrayList<Observer> observers;	//用于记录观察者
+	private float temperature;
+	private float humidity;
+	private float pressure;
+	
 	public WeatherData() {
+		observers = new ArrayList<Observer>();
 	}
 
+	@Override
+	public void registerObserver(Observer o) {
+		//注册观察者
+		observers.add(o);
+	}
+
+	@Override
+	public void removeObserver(Observer o) {
+		//删除观察者
+		int i = observers.indexOf(o);
+		observers.remove(i);
+	}
+
+	@Override
+	public void notifyObservers() {
+		//将状态告诉每一个观察者
+		for(Observer o : observers) {
+			o.update(temperature, humidity, pressure);
+		}
+	}
+	
 	/*
 	 * 1. 以下三个getter方法可用于取得三个测量值: 温度, 湿度和气压
 	 */
 	public float getTemperature() {
-		return 0;
+		return this.temperature;
 	}
 
 	public float getHumidity() {
-		return 0;
+		return this.humidity;
 	}
 
 	public float getPressure() {
-		return 0;
+		return this.pressure;
 	}
 
 	/*
 	 * 2. 每当气象测量数据有所更新, 则调用本方法
-	 * --> 现在实现本方法
+	 * 	-->现在实现本方法, 本方法的第一个代码实现版本原先就有错
+	 * 	-->二次修正本方法
 	 */
 	public void measurementsChanged() {
-		
-		/*
-		 * 假设三个getter方法能够帮助获取相关的数据
-		 */
-		float temp = getTemperature();
-		float humidity = getHumidity();
-		float pressure = getPressure();
-		
-		/*
-		 * 此处假设已存在三种公告板的变量, 并且公告板类中都具有update(temp, humidity, pressure)的方法
-		 * 
-		 * 为什么这样的代码编写是非常不规范的?
-		 * 这种编写方式是'针对具体实现变成', 如今后需添加或删除布告板, 则必须修改本程序
-		 * 		三个公告板都拥有update()方法, 因此可以抽象出update()方法, 参数分别是温度, 湿度和气压
-		 */
-		currentCoditionDisplay.update(temp, humidity, pressure);
-		statisticsDisplay.update(temp, humidity, pressure);
-		forecastDisplay.update(temp, humidity, pressure);
+		//每当从气象站获得更新的观测值时, 通知观察者
+		notifyObservers();
 	}
 	
+	public void setMeasurements(float temperature, float humidity, float pressure) {
+		this.temperature = temperature;
+		this.humidity = humidity;
+		this.pressure = pressure;
+		measurementsChanged();	//每当成功设置新的温度, 湿度, 气压数据之后, 则表示数据已经进行了更新
+	}
+
 }
