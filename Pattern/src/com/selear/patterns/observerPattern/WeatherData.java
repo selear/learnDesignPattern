@@ -22,16 +22,27 @@ public class WeatherData {
 
 	/*
 	 * 2. 每当气象测量数据有所更新, 则调用本方法
+	 * --> 现在实现本方法
 	 */
 	public void measurementsChanged() {
-		// Code
+		
+		/*
+		 * 假设三个getter方法能够帮助获取相关的数据
+		 */
+		float temp = getTemperature();
+		float humidity = getHumidity();
+		float pressure = getPressure();
+		
+		/*
+		 * 此处假设已存在三种公告板的变量, 并且公告板类中都具有update(temp, humidity, pressure)的方法
+		 * 
+		 * 为什么这样的代码编写是非常不规范的?
+		 * 这种编写方式是'针对具体实现变成', 如今后需添加或删除布告板, 则必须修改本程序
+		 * 		三个公告板都拥有update()方法, 因此可以抽象出update()方法, 参数分别是温度, 湿度和气压
+		 */
+		currentCoditionDisplay.update(temp, humidity, pressure);
+		statisticsDisplay.update(temp, humidity, pressure);
+		forecastDisplay.update(temp, humidity, pressure);
 	}
-
-	/*
-	 * 实现三个使用天气数据的布告板: 目前状态, 气象统计, 天气预报 一旦WeatherData有新的测量数据, 这些布告必须马上更新
-	 */
-
-	/*
-	 * 本系统必须方便扩展, 可让其他开发人员建立制定的布告板, 用户可以随心所欲添加删除任何布告板.
-	 */
+	
 }
