@@ -1,4 +1,4 @@
-package com.selear.patterns.observerPattern.interf;
+package com.selear.patterns.observer.interf;
 
 public interface DisplayElement {
 	public void display();
