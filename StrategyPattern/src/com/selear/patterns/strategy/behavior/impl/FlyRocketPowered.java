@@ -1,6 +1,6 @@
-package com.selear.test.behavior.impl;
+package com.selear.patterns.strategy.behavior.impl;
 
-import com.selear.test.behavior.FlyBehavior;
+import com.selear.patterns.strategy.behavior.FlyBehavior;
 
 public class FlyRocketPowered implements FlyBehavior {
 

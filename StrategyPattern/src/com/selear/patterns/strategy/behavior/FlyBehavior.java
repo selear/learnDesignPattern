@@ -1,4 +1,4 @@
-package com.selear.test.behavior;
+package com.selear.patterns.strategy.behavior;
 
 public interface FlyBehavior {
 	void fly();

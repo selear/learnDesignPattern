@@ -1,8 +1,8 @@
-package com.selear.test.subType;
+package com.selear.patterns.strategyPattern.subType;
 
-import com.selear.test.Duck;
-import com.selear.test.behavior.impl.FlyNoWay;
-import com.selear.test.behavior.impl.MuteQuack;
+import com.selear.patterns.strategy.Duck;
+import com.selear.patterns.strategy.behavior.impl.FlyNoWay;
+import com.selear.patterns.strategy.behavior.impl.MuteQuack;
 
 public class DecoyDuck extends Duck {
 

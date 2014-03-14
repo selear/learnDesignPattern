@@ -1,7 +1,7 @@
-package com.selear.test;
+package com.selear.patterns.strategy;
 
-import com.selear.test.behavior.FlyBehavior;
-import com.selear.test.behavior.QuackBehavior;
+import com.selear.patterns.strategy.behavior.FlyBehavior;
+import com.selear.patterns.strategy.behavior.QuackBehavior;
 
 public class Duck {
 

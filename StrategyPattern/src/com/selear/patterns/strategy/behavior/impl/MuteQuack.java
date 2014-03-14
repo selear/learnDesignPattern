@@ -1,6 +1,6 @@
-package com.selear.test.behavior.impl;
+package com.selear.patterns.strategy.behavior.impl;
 
-import com.selear.test.behavior.QuackBehavior;
+import com.selear.patterns.strategy.behavior.QuackBehavior;
 
 public class MuteQuack implements QuackBehavior {
 

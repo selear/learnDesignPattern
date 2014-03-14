@@ -1,10 +1,11 @@
-package com.selear.demo;
+package com.selear.demos.strategyPattern;
 
-import com.selear.test.Duck;
-import com.selear.test.behavior.impl.FlyRocketPowered;
-import com.selear.test.subType.MallardDuck;
-import com.selear.test.subType.ModelDuck;
+import com.selear.patterns.strategy.Duck;
+import com.selear.patterns.strategy.behavior.impl.FlyRocketPowered;
+import com.selear.patterns.strategyPattern.subType.MallardDuck;
+import com.selear.patterns.strategyPattern.subType.ModelDuck;
 
+//这是策略模式的运行Demo
 public class MiniDuckSimulator {
 	
 	public static void main(String[] args) {

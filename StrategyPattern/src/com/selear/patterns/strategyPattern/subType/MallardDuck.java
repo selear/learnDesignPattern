@@ -1,8 +1,8 @@
-package com.selear.test.subType;
+package com.selear.patterns.strategyPattern.subType;
 
-import com.selear.test.Duck;
-import com.selear.test.behavior.impl.FlyWithWings;
-import com.selear.test.behavior.impl.Quack;
+import com.selear.patterns.strategy.Duck;
+import com.selear.patterns.strategy.behavior.impl.FlyWithWings;
+import com.selear.patterns.strategy.behavior.impl.Quack;
 
 public class MallardDuck extends Duck{
 
