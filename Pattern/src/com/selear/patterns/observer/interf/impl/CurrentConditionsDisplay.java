@@ -1,33 +1,35 @@
 package com.selear.patterns.observer.interf.impl;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import com.selear.patterns.observer.interf.DisplayElement;
-import com.selear.patterns.observer.interf.Observer;
-import com.selear.patterns.observer.interf.Subject;
 
 public class CurrentConditionsDisplay implements Observer, DisplayElement {
-
+	private Observable observable;
 	private float temperature;
 	private float humidity;
-	private Subject weatherData;
 
-	public CurrentConditionsDisplay(Subject weatherData) {
-		this.weatherData = weatherData; // 为什么要保存Subject的引用, 构造函数完成之后用不到该变量了? A:
-										// 也有可能会想要取消注册, 如果已经有了对Subject的引用会比较方便
-		weatherData.registerObserver(this);
+	public CurrentConditionsDisplay(Observable observable) {
+		this.observable = observable;
+		observable.addObserver(this);
 	}
 
 	@Override
 	public void display() {
-		System.out.println("Current conditions: " + temperature
-				+ "F degrees\n" + humidity + "% humidity\nHeat index: " + computeHeatIndex(temperature, humidity));
+		System.out.println("Current conditions: " + temperature + "F degrees\n"
+				+ humidity + "% humidity\nHeat index: "
+				+ computeHeatIndex(temperature, humidity));
 	}
 
 	@Override
-	public void update(float temperature, float humidity, float pressure) {
-		this.temperature = temperature;
-		this.humidity = humidity;
-		display(); // 数据更新之后, 立即调用显示方法, 将获取到的数据显示出来; 而update()方法的调用,
-					// 则是在Subject类中通过得带存储的观察者列表执行update()来完成
+	public void update(Observable obs, Object arg) {
+		if (obs instanceof WeatherData) {
+			WeatherData weatherData = (WeatherData) obs;
+			this.temperature = weatherData.getTemperature();
+			this.humidity = weatherData.getHumidity();
+			display();// 数据更新之后, 立即调用显示方法, 将获取到的数据显示出来;
+		}
 	}
 
 	private float computeHeatIndex(float t, float rh) {
@@ -44,4 +46,5 @@ public class CurrentConditionsDisplay implements Observer, DisplayElement {
 				* rh * rh)));
 		return index;
 	}
+
 }

@@ -1,45 +1,18 @@
 package com.selear.patterns.observer.interf.impl;
 
-import java.util.ArrayList;
+import java.util.Observable;
 
-import com.selear.patterns.observer.interf.Observer;
-import com.selear.patterns.observer.interf.Subject;
+public class WeatherData extends Observable {
 
-public class WeatherData implements Subject {
-
-	private ArrayList<Observer> observers; // 用于记录观察者
+	// private ArrayList<Observer> observers; // 用于记录观察者, 因为继承了Java自带的观察者模式的类,
+	// 因此本代码可以注释
 	private float temperature;
 	private float humidity;
 	private float pressure;
 
 	public WeatherData() {
-		observers = new ArrayList<Observer>();
 	}
 
-	@Override
-	public void registerObserver(Observer o) {
-		// 注册观察者
-		observers.add(o);
-	}
-
-	@Override
-	public void removeObserver(Observer o) {
-		// 移除指定观察者
-		int i = observers.indexOf(o);
-		observers.remove(i);
-	}
-
-	@Override
-	public void notifyObservers() {
-		// 将状态告诉每一个观察者
-		for (Observer o : observers) {
-			o.update(temperature, humidity, pressure);
-		}
-	}
-
-	/*
-	 * 1. 以下三个getter方法可用于取得三个测量值: 温度, 湿度和气压
-	 */
 	public float getTemperature() {
 		return temperature;
 	}
@@ -52,10 +25,9 @@ public class WeatherData implements Subject {
 		return pressure;
 	}
 
-	/*
-	 * 2. 每当气象测量数据有所更新, 则调用本方法 -->现在实现本方法, 本方法的第一个代码实现版本原先就有错 -->二次修正本方法
-	 */
 	public void measurementsChanged() {
+		// 调用本方法, 但没有传递数据对象, 表示通过观察者主动获取数据对象
+		setChanged();
 		// 每当从气象站获得更新的观测值时, 通知观察者
 		notifyObservers();
 	}
